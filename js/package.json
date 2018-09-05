@@ -1,0 +1,26 @@
+{
+  "name": "playground",
+  "description": "A playground for security demonstration",
+  "dependencies": {
+    "@polymer/decorators": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0-pre.25",
+    "@polymer/polymer": "^3.0.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --config ./webpack.dev.conf.js",
+    "build": "webpack --config ./webpack.prod.conf.js"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^5.0.0",
+    "typescript": "^3.0.3",
+    "wct-browser-legacy": "^1.0.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  }
+}

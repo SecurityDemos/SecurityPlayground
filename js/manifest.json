@@ -1,0 +1,7 @@
+{
+  "name": "playground",
+  "short_name": "playground",
+  "description": "A playground for security demonstration",
+  "start_url": "/",
+  "display": "standalone"
+}
