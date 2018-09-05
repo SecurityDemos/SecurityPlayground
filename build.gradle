@@ -27,6 +27,9 @@ repositories {
 dependencies {
 	//compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
 	compile('org.codehaus.groovy:groovy')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
