@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../static')
   },
   module: {
     rules: [
@@ -31,7 +31,7 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname) }),
+    new CleanWebpackPlugin(['static'], { root: path.resolve(__dirname, '..') }),
     new webpack.NormalModuleReplacementPlugin(
       /environments\/environment\.ts/,
       'environment.prod.ts'
