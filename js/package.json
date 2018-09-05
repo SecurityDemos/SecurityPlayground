@@ -3,8 +3,13 @@
   "description": "A playground for security demonstration",
   "dependencies": {
     "@polymer/decorators": "^3.0.0",
+    "@polymer/font-roboto-local": "^3.0.0-pre.25",
     "@polymer/paper-button": "^3.0.0-pre.25",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/paper-dialog": "^3.0.0-pre.25",
+    "@polymer/paper-input": "^3.0.0-pre.25",
+    "@polymer/paper-spinner": "^3.0.0-pre.25",
+    "@polymer/polymer": "^3.0.0",
+    "url-template": "^2.0.8"
   },
   "scripts": {
     "start": "webpack-dev-server --open --config ./webpack.dev.conf.js",

@@ -52,6 +52,10 @@ module.exports = {
         ),
         to: './webcomponentjs',
         flatten: true
+      },
+      {
+        from: path.resolve(__dirname, './node_modules/@polymer/font-roboto-local/'),
+        to: './font-roboto-local'
       }
     ]),
     new webpack.IgnorePlugin(/vertx/),

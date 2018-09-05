@@ -6,13 +6,21 @@
 
     <title>playground</title>
     <meta name="description" content="A playground for security demonstration">
+    <script>
+      window.polymerSkipLoadingFontRoboto=true;
+    </script>
+    <script type="module">
+      import './font-roboto-local/roboto.js';
+      window.polymerSkipLoadingFontRoboto=true;
+    </script>
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="/manifest.json">
 
-    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-    <script type="module" src="/src/playground-app/playground-app.js" crossorigin></script>
+<!--
+    <script src="webcomponentjs/webcomponents-lite.js"></script>
+  -->
+    <script src="webcomponentjs/webcomponents-loader.js"></script>
   </head>
   <body>
     <playground-app></playground-app>

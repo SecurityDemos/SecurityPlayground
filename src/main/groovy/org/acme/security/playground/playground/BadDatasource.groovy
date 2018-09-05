@@ -18,7 +18,7 @@ class BadDatasource {
                 ResultSet res = ps.executeQuery()
                 try {
                     while (res.next()) {
-                        return res.getString('display_name')
+                        return new LoginData(res.getLong('id'), res.getString('display_name'))
                     }
                 } finally {
                     res.close()

@@ -8,7 +8,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: [
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://localhost:9090',
         './src/index'
     ]
   },
@@ -58,6 +58,10 @@ module.exports = {
         ),
         to: './webcomponentjs',
         flatten: true
+      },
+      {
+        from: path.resolve(__dirname, './node_modules/@polymer/font-roboto-local/'),
+        to: './font-roboto-local'
       }
     ]),
     new webpack.IgnorePlugin(/vertx/),

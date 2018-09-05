@@ -4,6 +4,9 @@ import '@polymer/paper-button';
 import { GET } from '../shared/util';
 import { BACKEND_URL } from '../environments/environment';
 
+import './bad-login-button';
+import { UserInfo } from "../model/model";
+
 
 /**
  * @customElement
@@ -11,25 +14,41 @@ import { BACKEND_URL } from '../environments/environment';
  */
 @customElement('playground-app')
 class PlaygroundApp extends PolymerElement {
-  @property({ type: String })
-  prop1: string = "test";
+  @property({ type: Boolean })
+  isLoggedIn: boolean = false;
+  @property({ type: Object })
+  userInfo?: UserInfo;
 
   static get template() {
     return html`
       <style>
         :host {
           display: block;
+          font-family: Roboto;
         }
       </style>
-      <h2>Hello [[prop1]]!</h2>
-      <paper-button on-click='askServer'>click me </paper-button>
+      <h2>Security playground</h2>
+      <dom-if if=[[!isLoggedIn]]>
+        <template>
+          <bad-login on-login-result='loggedIn'></bad-login>
+        </template>
+      </dom-if>
+      <dom-if if=[[isLoggedIn]]>
+        <template>
+          Benvenuto [[userInfo.displayName]] !! <paper-button on-click='onLogout'>Logout</paper-button>
+        </template>
+      </dom-if>
     `;
   }
 
-  async askServer() {
-    console.log('hi there!');
-    let res = await GET({ url: `${BACKEND_URL}/test` });
-    console.log(`Result : ${res.responseText}`);
+  loggedIn(e: CustomEvent) {
+    this.userInfo = JSON.parse(e.detail);
+    this.isLoggedIn = true;
+  }
+
+  onLogout() {
+    this.isLoggedIn = false;
+    this.userInfo = undefined;
   }
 
 }

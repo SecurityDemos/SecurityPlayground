@@ -1,1 +1,1 @@
-import "./playground-app/playground-app";
+import './playground-app/playground-app';
