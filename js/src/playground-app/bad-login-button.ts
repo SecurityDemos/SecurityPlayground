@@ -6,7 +6,7 @@ import '@polymer/paper-spinner/paper-spinner';
 import '@polymer/paper-input/paper-input';
 import { BACKEND_URL } from "../environments/environment";
 import { GET } from "../shared/util";
-
+import * as TEMPLATE from './bad-login-button.html';
 
 @customElement('bad-login')
 export default class BadLoginButton extends PolymerElement {
@@ -23,27 +23,7 @@ export default class BadLoginButton extends PolymerElement {
 
 
   static get template() {
-    return html`
-    <style>
-      .error {
-        color:red;
-      }
-    </style>
-    <paper-dialog opened={{loginOpened}}>
-      <h2>Please login</h2>
-      <paper-input label='username' value="{{username}}"></paper-input>
-      <paper-input label='password' value="{{password}}"></paper-input>
-      <span>Password volutamente in chiaro</span>
-      <div>Suggerimento : "whatever' OR '1'='1"</div>
-      <div class='error'>[[errorMessage]]</div>
-      <paper-spinner active='[[inProgress]]'></paper-spinner>
-      <div>
-        <paper-button on-click='doLogin' dialog-commit>Submit</paper-button>
-        <paper-button on-click='doClose' dialog-rollback>Cancel</paper-button>
-      </div>
-    </paper-dialog>
-    <paper-button on-click='openLogin'>Login</paper-button>
-    `
+    return html([TEMPLATE] as any);
   }
 
   openLogin() {

@@ -1,4 +1,5 @@
 import * as template from 'url-template';
+import { html } from '@polymer/polymer';
 
 export function GET(_: { url: string, parameters?: any }): Promise<XMLHttpRequest> {
   console.log(`Template : ${template}`);
@@ -21,4 +22,8 @@ export function GET(_: { url: string, parameters?: any }): Promise<XMLHttpReques
     req.send();
   });
 
+}
+
+export function asTemplate(template: any): HTMLTemplateElement {
+  return html([template] as any);
 }
