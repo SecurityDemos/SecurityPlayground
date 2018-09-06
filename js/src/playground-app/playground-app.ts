@@ -1,11 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element";
+import { PolymerElement } from "@polymer/polymer/polymer-element";
 import { customElement, property } from '@polymer/decorators';
 import '@polymer/paper-button';
-import { GET } from '../shared/util';
-import { BACKEND_URL } from '../environments/environment';
+import { asTemplate } from '../shared/util';
 
 import './bad-login-button';
 import { UserInfo } from "../model/model";
+import * as TEMPLATE from "./playground-app.html";
 
 
 /**
@@ -20,29 +20,11 @@ class PlaygroundApp extends PolymerElement {
   userInfo?: UserInfo;
 
   static get template() {
-    return html`
-      <style>
-        :host {
-          display: block;
-          font-family: Roboto;
-        }
-      </style>
-      <h2>Security playground</h2>
-      <dom-if if=[[!isLoggedIn]]>
-        <template>
-          <bad-login on-login-result='loggedIn'></bad-login>
-        </template>
-      </dom-if>
-      <dom-if if=[[isLoggedIn]]>
-        <template>
-          Benvenuto [[userInfo.displayName]] !! <paper-button on-click='onLogout'>Logout</paper-button>
-        </template>
-      </dom-if>
-    `;
+    return asTemplate(TEMPLATE);
   }
 
   loggedIn(e: CustomEvent) {
-    this.userInfo = JSON.parse(e.detail);
+    this.userInfo = e.detail;
     this.isLoggedIn = true;
   }
 
