@@ -11,7 +11,7 @@ import javax.sql.DataSource
 
 @SpringBootApplication
 class PlaygroundApplication {
-
+/*
     @Bean
     @Primary
     DataSource dataSource() {
@@ -29,7 +29,7 @@ class PlaygroundApplication {
     JdbcTemplate jdbcTemplate() {
         new JdbcTemplate(dataSource())
     }
-
+*/
 
     static void main(String[] args) {
         SpringApplication.run PlaygroundApplication, args

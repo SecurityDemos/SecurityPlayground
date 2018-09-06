@@ -24,6 +24,8 @@ export function GET(_: { url: string, parameters?: any }): Promise<XMLHttpReques
 
 }
 
-export function asTemplate(template: any): HTMLTemplateElement {
+type HtmlImport = typeof import('*.html');
+
+export function asTemplate(template: HtmlImport): HTMLTemplateElement {
   return html([template] as any);
 }

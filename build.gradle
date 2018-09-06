@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.4.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'groovy'
@@ -20,16 +20,23 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	//compile('org.springframework.boot:spring-boot-starter')
-	compile("org.springframework.boot:spring-boot-starter-web")
+    //compile('org.springframework.boot:spring-boot-starter')
+    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+
+
+    // https://mvnrepository.com/artifact/org.liquibase/liquibase-core
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.6.2'
+
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
-	compile('org.codehaus.groovy:groovy')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    //compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
+    compile('org.codehaus.groovy:groovy')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

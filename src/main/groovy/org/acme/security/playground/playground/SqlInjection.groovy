@@ -14,9 +14,15 @@ class SqlInjection {
     @Autowired
     BadDatasource badDatasource
 
+    Map<String,String> authTokens = new HashMap<>()
 
     @RequestMapping('/login/bad')
-    loginWithInjection(@RequestParam('username') String username, @RequestParam('password') String password) {
+    def loginWithInjection(@RequestParam('username') String username, @RequestParam('password') String password) {
         badDatasource.doLogin(username, password)
+    }
+
+    @RequestMapping('/user/')
+    LoginData getUserInfo() {
+
     }
 }

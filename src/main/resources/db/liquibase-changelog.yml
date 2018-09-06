@@ -1,0 +1,59 @@
+databaseChangeLog:
+- changeSet:
+    id: 1536231291238-1
+    author: vittorio (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+            name: id
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: username
+            type: VARCHAR(100)
+        - column:
+            name: password
+            type: VARCHAR(100)
+        - column:
+            name: display_name
+            type: VARCHAR(200)
+        tableName: users
+- changeSet:
+    id: 1536231291238-2
+    author: vittorio (generated)
+    changes:
+    - insert:
+          columns:
+          - column:
+                name: id
+                valueNumeric: 1
+          - column:
+                name: username
+                value: mario
+          - column:
+                name: password
+                value: password
+          - column:
+                name: display_name
+                value: Mario Rossi
+          tableName: users
+    - insert:
+        columns:
+        - column:
+            name: id
+            valueNumeric: 2
+        - column:
+            name: username
+            value: giuseppe
+        - column:
+            name: password
+            value: password123
+        - column:
+            name: display_name
+            value: Giuseppe Verdi
+        tableName: users

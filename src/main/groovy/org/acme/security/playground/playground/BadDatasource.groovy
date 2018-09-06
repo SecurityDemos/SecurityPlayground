@@ -13,7 +13,7 @@ class BadDatasource {
     JdbcTemplate jdbcTemplate
 
     def doLogin(String username, String password) {
-        jdbcTemplate.execute("SELECT * FROM `users` WHERE `username` = '" + username + "' AND  `password`='" + password + "'", (PreparedStatementCallback) {
+        jdbcTemplate.execute("SELECT * FROM users WHERE username = '" + username + "' AND  password='" + password + "'", (PreparedStatementCallback) {
             ps ->
                 ResultSet res = ps.executeQuery()
                 try {
