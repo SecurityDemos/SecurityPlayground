@@ -6,6 +6,7 @@ import { asTemplate } from '../shared/util';
 import './bad-login-button';
 import { UserInfo } from "../model/model";
 import * as TEMPLATE from "./playground-app.html";
+import { sendUserInfoRequest } from "../service/api";
 
 
 /**
@@ -19,18 +20,22 @@ class PlaygroundApp extends PolymerElement {
   @property({ type: Object })
   userInfo?: UserInfo;
 
+  authToken?: string;
+
   static get template() {
     return asTemplate(TEMPLATE);
   }
 
-  loggedIn(e: CustomEvent) {
-    this.userInfo = e.detail;
+  async loggedIn(e: CustomEvent) {
+    this.authToken = e.detail;
+    this.userInfo = await sendUserInfoRequest(this.authToken || '');
     this.isLoggedIn = true;
   }
 
   onLogout() {
     this.isLoggedIn = false;
     this.userInfo = undefined;
+    this.authToken = undefined;
   }
 
 }

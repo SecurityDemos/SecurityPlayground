@@ -39,8 +39,8 @@ class BadLoginButton extends PolymerElement {
     this.errorMessage = '';
     try {
       this.inProgress = true;
-      let res = await sendLoginRequest(this.username || "", this.password || "");
-      this.dispatchEvent(new CustomEvent('login-result', { detail: res }));
+      let token = await sendLoginRequest(this.username || "", this.password || "");
+      this.dispatchEvent(new CustomEvent('login-result', { detail: token }));
       this.loginOpened = false;
     } catch (error) {
       this.errorMessage = "Credenziali non corrette!";
