@@ -9,6 +9,7 @@
     "@polymer/paper-input": "^3.0.0-pre.25",
     "@polymer/paper-spinner": "^3.0.0-pre.25",
     "@polymer/polymer": "^3.0.0",
+    "@types/url-template": "^2.0.28",
     "url-template": "^2.0.8"
   },
   "scripts": {

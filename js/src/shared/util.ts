@@ -2,9 +2,13 @@ import * as template from 'url-template';
 import { html } from '@polymer/polymer';
 
 export function GET(_: { url: string, parameters?: any }): Promise<XMLHttpRequest> {
-  console.log(`Template : ${template}`);
-  let t = template.parse(_.url);
-  let url = t.expand(_.parameters || {});
+  let url;
+  if (_.parameters) {
+    let t = template.parse(_.url);
+    url = t.expand(_.parameters);
+  } else {
+    url = _.url;
+  }
   return new Promise((resolve, reject) => {
 
     let req: XMLHttpRequest = new XMLHttpRequest();
