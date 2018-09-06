@@ -31,6 +31,40 @@ class BadDatasource {
         })
     }
 
+    def doLogin2(String username, String password) {
+        jdbcTemplate.execute("SELECT username FROM users WHERE username = '" + username + "' AND  password='" + password + "'", (PreparedStatementCallback) {
+            ps ->
+                ResultSet res = ps.executeQuery()
+                try {
+                    while (res.next()) {
+                        return res.getString('username')
+                    }
+                } finally {
+                    res.close()
+                }
+
+                return null
+        })
+    }
+
+    def doLoginOk(String username, String password) {
+        jdbcTemplate.execute("SELECT username FROM users WHERE username = ? AND  password= ?", (PreparedStatementCallback) {
+            ps ->
+                ps.setString(1,username)
+                ps.setString(2,password)
+                ResultSet res = ps.executeQuery()
+                try {
+                    while (res.next()) {
+                        return res.getString('username')
+                    }
+                } finally {
+                    res.close()
+                }
+
+                return null
+        })
+    }
+
     LoginData queryLoginDataByUsername(String username) {
         jdbcTemplate.execute("SELECT * FROM users WHERE username = '" + username + "'", (PreparedStatementCallback) {
             ps ->

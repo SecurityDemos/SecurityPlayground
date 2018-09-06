@@ -1,6 +1,9 @@
 import { PolymerElement } from "@polymer/polymer/polymer-element";
 import { customElement, property } from '@polymer/decorators';
 import '@polymer/paper-button';
+import '@polymer/paper-tabs/paper-tab';
+import '@polymer/paper-tabs/paper-tabs';
+import '@polymer/iron-pages/iron-pages';
 import { asTemplate } from '../shared/util';
 
 import './bad-login-button';
@@ -19,6 +22,8 @@ class PlaygroundApp extends PolymerElement {
   isLoggedIn: boolean = false;
   @property({ type: Object })
   userInfo?: UserInfo;
+  @property({type:Number})
+  pageSelected:number = 0;
 
   authToken?: string;
 

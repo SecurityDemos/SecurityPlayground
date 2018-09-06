@@ -12,6 +12,26 @@ export async function sendLoginRequest(username: string, password: string): Prom
   return res.response;
 }
 
+export async function sendLoginRequest2(username: string, password: string): Promise<string> {
+  let res = await GET({
+    url: `${BACKEND_URL}/login/bad2?username={username}&password={password}`, parameters: {
+      username: username,
+      password: password,
+    }
+  });
+  return res.response;
+}
+
+export async function sendLoginRequestOk(username: string, password: string): Promise<string> {
+  let res = await GET({
+    url: `${BACKEND_URL}/login?username={username}&password={password}`, parameters: {
+      username: username,
+      password: password,
+    }
+  });
+  return res.response;
+}
+
 export async function sendUserInfoRequest(token: string): Promise<UserInfo> {
   let res = await GET({
     url: `${BACKEND_URL}/user/me`,
