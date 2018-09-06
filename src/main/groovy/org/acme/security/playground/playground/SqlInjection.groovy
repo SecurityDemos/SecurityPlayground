@@ -27,7 +27,7 @@ class SqlInjection {
             return ResponseEntity.ok(token)
         }
         // Return 401 error
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
 
     }
 

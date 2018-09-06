@@ -2,18 +2,32 @@
   .error {
     color:red;
   }
+
+  .hint {
+    padding:1em;
+    background-color:#e6e6e6;
+  }
 </style>
 <paper-dialog opened={{loginOpened}}>
   <h2>Please login</h2>
   <paper-input label='username' value="{{username}}"></paper-input>
   <paper-input label='password' value="{{password}}"></paper-input>
   <span>Password volutamente in chiaro</span>
-  <div>Suggerimento : "whatever' OR '1'='1"</div>
+  <div class='hint_toggle' on-click='toggleHint'>
+    <paper-icon-button icon=[[showHintToggleIcon]] ></paper-icon-button> <span> mostra il suggerimento </span>
+  </div>
+  <iron-collapse opened={{hintOpened}}>
+    <div class='hint'>prova con : <pre>whatever' OR '1'='1</pre></div>
+  </iron-collapse>
   <div class='error'>[[errorMessage]]</div>
-  <paper-spinner active='[[inProgress]]'></paper-spinner>
+  <dom-if if=[[inProgress]]>
+    <template>
+      <paper-spinner active></paper-spinner>
+    </template>
+  </dom-if>
   <div>
     <paper-button on-click='doLogin' dialog-commit>Submit</paper-button>
     <paper-button on-click='doClose' dialog-rollback>Cancel</paper-button>
   </div>
 </paper-dialog>
-<paper-button on-click='openLogin'>Login</paper-button>
+<paper-button on-click='openLogin' raised>Login</paper-button>
