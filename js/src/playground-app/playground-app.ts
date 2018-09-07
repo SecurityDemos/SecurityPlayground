@@ -10,6 +10,7 @@ import {asTemplate} from '../shared/util';
 import * as TEMPLATE from "./playground-app.html";
 import '../components/bad-login-1/bad-login-1';
 import '../components/bad-login-2/bad-login-2';
+import '../components/login-ok/login-ok';
 
 
 /**

@@ -9,7 +9,7 @@ import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/iron-icons/iron-icons';
 import {asTemplate} from "../../shared/util";
 import * as TEMPLATE from './bad-login-button.html';
-import {sendLoginRequest, sendLoginRequest2} from "../../service/api";
+import {sendLoginRequest, sendLoginRequest2, sendLoginRequestOk} from "../../service/api";
 
 @customElement('bad-login')
 class BadLoginButton extends PolymerElement {
@@ -28,7 +28,7 @@ class BadLoginButton extends PolymerElement {
     @property({type: Boolean})
     hintOpened: boolean = false;
     @property({type: String})
-    mode: "bad1" | "bad2" = "bad1";
+    mode: "bad1" | "bad2" | "ok" = "bad1";
 
     static get template() {
         return asTemplate(TEMPLATE);
@@ -60,6 +60,9 @@ class BadLoginButton extends PolymerElement {
                     break;
                 case "bad2":
                     token = await sendLoginRequest2(this.username || "", this.password || "");
+                    break;
+                case "ok":
+                    token = await sendLoginRequestOk(this.username || "", this.password || "");
                     break;
             }
             this.dispatchEvent(new CustomEvent('login-result', {detail: token}));
