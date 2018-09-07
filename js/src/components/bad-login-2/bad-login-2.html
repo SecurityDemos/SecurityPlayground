@@ -1,0 +1,28 @@
+<style>
+    .success {
+        padding: 1em;
+        margin: 1em;
+        border: 1px solid gray;
+        background-color: midnightblue;
+        color: white;
+
+    }
+</style>
+<common-layout readme="[[readme]]">
+    <div slot="right">
+        <dom-if if=[[!isLoggedIn]]>
+            <template>
+                <bad-login on-login-result='loggedIn' mode="bad2"></bad-login>
+            </template>
+        </dom-if>
+        <dom-if if=[[isLoggedIn]]>
+            <template>
+                <div class="success">
+                    <div>Autenticazione avvenuta con successo, bevenuto : [[userInfo.displayName]] !!</div>
+                    <br>
+                    <paper-button on-click='onLogout' raised>Logout</paper-button>
+                </div>
+            </template>
+        </dom-if>
+    </div>
+</common-layout>

@@ -9,13 +9,14 @@ import '@polymer/iron-flex-layout/iron-flex-layout';
 import {UserInfo} from "../../model/model";
 import {sendUserInfoRequest} from "../../service/api";
 import {asTemplate} from "../../shared/util";
-import * as TEMPLATE from "./bad-login-1.html";
-import * as README from "./bad-login-1.md";
+import * as TEMPLATE from "./bad-login-2.html";
+import * as README from "./bad-login-2.md";
+
 import '../common-layout/bad-login-button';
 import '../common-layout/common-layout';
 
-@customElement('bad-login-1')
-class BadLogin1 extends PolymerElement {
+@customElement('bad-login-2')
+class BadLogin2 extends PolymerElement {
     @property({type: Boolean})
     isLoggedIn: boolean = false;
     @property({type: Object})
