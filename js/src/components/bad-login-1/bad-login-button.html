@@ -17,7 +17,7 @@
     <paper-icon-button icon=[[showHintToggleIcon]] ></paper-icon-button> <span> mostra il suggerimento </span>
   </div>
   <iron-collapse opened={{hintOpened}}>
-    <div class='hint'>prova con : <pre>whatever' OR '1'='1</pre></div>
+    <div class='hint'>prova con : <pre>qualsiasi' OR '1'='1</pre></div>
   </iron-collapse>
   <div class='error'>[[errorMessage]]</div>
   <dom-if if=[[inProgress]]>
@@ -30,4 +30,4 @@
     <paper-button on-click='doClose' dialog-rollback>Cancel</paper-button>
   </div>
 </paper-dialog>
-<paper-button on-click='openLogin' raised>Login</paper-button>
+<paper-button on-click='openLogin' raised disabled="[[loginOpened]]">Login</paper-button>

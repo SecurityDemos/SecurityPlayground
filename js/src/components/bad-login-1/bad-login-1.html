@@ -1,10 +1,58 @@
-<dom-if if=[[!isLoggedIn]]>
-    <template>
-        <bad-login on-login-result='loggedIn'></bad-login>
-    </template>
-</dom-if>
-<dom-if if=[[isLoggedIn]]>
-    <template>
-        Benvenuto [[userInfo.displayName]] !! <paper-button on-click='onLogout' raised>Logout</paper-button>
-    </template>
-</dom-if>
+<style>
+    .mark [slot="markdown-html"] p {
+        color: #909090;
+    }
+
+    .mark [slot="markdown-html"] td:first-child {
+        padding-left: 24px;
+    }
+
+    .mark [slot="markdown-html"] CODE {
+        background: black;
+        color: greenyellow;
+    }
+
+    .mark {
+    }
+
+    .right {
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+    }
+
+    .success {
+        padding: 1em;
+        margin: 1em;
+        border: 1px solid gray;
+        background-color: midnightblue;
+        color: white;
+
+    }
+
+    .main {
+        @apply --layout-horizontal;
+    }
+</style>
+<div class="main">
+    <div class="left">
+        <marked-element class="mark" markdown="[[readme]]">
+            <div slot="markdown-html"></div>
+        </marked-element>
+    </div>
+    <div class="right">
+        <dom-if if=[[!isLoggedIn]]>
+            <template>
+                <bad-login on-login-result='loggedIn'></bad-login>
+            </template>
+        </dom-if>
+        <dom-if if=[[isLoggedIn]]>
+            <template>
+                <div class="success">
+                    <div>Autenticazione avvenuta con successo, bevenuto : [[userInfo.displayName]] !!</div>
+                    <br>
+                    <paper-button on-click='onLogout' raised>Logout</paper-button>
+                </div>
+            </template>
+        </dom-if>
+    </div>
+</div>

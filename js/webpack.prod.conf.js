@@ -5,59 +5,66 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    app: './src/index'
-  },
-  output: {
-    filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, '../static')
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: 'html-loader'
-        }
-      },
-      {
-        test: /\.ts?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['.ts', '.js']
-  },
-  plugins: [
-    new CleanWebpackPlugin(['static'], { root: path.resolve(__dirname, '..') }),
-    new webpack.NormalModuleReplacementPlugin(
-      /environments\/environment\.ts/,
-      'environment.prod.ts'
-    ),
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, './static'),
-        to: 'static',
-        ignore: ['.*']
-      },
-      {
-        from: path.join(
-          path.resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/'),
-          '*.js'
+    entry: {
+        app: './src/index'
+    },
+    output: {
+        filename: '[name].[chunkhash].js',
+        path: path.resolve(__dirname, '../static')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader'
+                }
+            },
+            {
+                test: /\.ts?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: require.resolve('marked'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: 'marked'
+                }]
+            }
+        ]
+    },
+    resolve: {
+        extensions: ['.ts', '.js']
+    },
+    plugins: [
+        new CleanWebpackPlugin(['static'], {root: path.resolve(__dirname, '..')}),
+        new webpack.NormalModuleReplacementPlugin(
+            /environments\/environment\.ts/,
+            'environment.prod.ts'
         ),
-        to: './webcomponentjs',
-        flatten: true
-      },
-      {
-        from: path.resolve(__dirname, './node_modules/@polymer/font-roboto-local/'),
-        to: './font-roboto-local'
-      }
-    ]),
-    new webpack.IgnorePlugin(/vertx/),
-  ]
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, './static'),
+                to: 'static',
+                ignore: ['.*']
+            },
+            {
+                from: path.join(
+                    path.resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/'),
+                    '*.js'
+                ),
+                to: './webcomponentjs',
+                flatten: true
+            },
+            {
+                from: path.resolve(__dirname, './node_modules/@polymer/font-roboto-local/'),
+                to: './font-roboto-local'
+            }
+        ]),
+        new webpack.IgnorePlugin(/vertx/),
+    ]
 };
