@@ -1,0 +1,61 @@
+<style>
+    .mark [slot="markdown-html"] p {
+        color: #909090;
+    }
+
+    .mark [slot="markdown-html"] td:first-child {
+        padding-left: 24px;
+    }
+
+    .mark [slot="markdown-html"] CODE {
+        background: black;
+        color: greenyellow;
+    }
+
+    .mark {
+    }
+
+    .right {
+        @apply --layout-flex;
+        @apply --layout-vertical;
+        @apply --layout-center;
+        @apply --layout-center-justified;
+
+    }
+
+    .left {
+        @apply --layout-flex-2;
+        background: lightgrey;
+        overflow: auto;
+        border-right: 1px dashed darkgrey;
+        padding:1em;
+    }
+
+    .success {
+        padding: 1em;
+        margin: 1em;
+        border: 1px solid gray;
+        background-color: midnightblue;
+        color: white;
+
+    }
+
+    .main {
+        @apply --layout-horizontal;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+</style>
+<div class="main">
+    <div class="left">
+        <marked-element class="mark" markdown="[[readme]]">
+            <div slot="markdown-html"></div>
+        </marked-element>
+    </div>
+    <div class="right">
+       <slot name="right"></slot>
+    </div>
+</div>

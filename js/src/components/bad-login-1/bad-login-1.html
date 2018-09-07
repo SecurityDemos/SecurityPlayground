@@ -1,25 +1,4 @@
 <style>
-    .mark [slot="markdown-html"] p {
-        color: #909090;
-    }
-
-    .mark [slot="markdown-html"] td:first-child {
-        padding-left: 24px;
-    }
-
-    .mark [slot="markdown-html"] CODE {
-        background: black;
-        color: greenyellow;
-    }
-
-    .mark {
-    }
-
-    .right {
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-    }
-
     .success {
         padding: 1em;
         margin: 1em;
@@ -28,18 +7,9 @@
         color: white;
 
     }
-
-    .main {
-        @apply --layout-horizontal;
-    }
 </style>
-<div class="main">
-    <div class="left">
-        <marked-element class="mark" markdown="[[readme]]">
-            <div slot="markdown-html"></div>
-        </marked-element>
-    </div>
-    <div class="right">
+<common-layout readme="[[readme]]">
+    <div slot="right">
         <dom-if if=[[!isLoggedIn]]>
             <template>
                 <bad-login on-login-result='loggedIn'></bad-login>
@@ -55,4 +25,4 @@
             </template>
         </dom-if>
     </div>
-</div>
+</common-layout>

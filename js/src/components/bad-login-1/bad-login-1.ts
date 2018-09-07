@@ -4,16 +4,15 @@
  */
 import {PolymerElement} from "@polymer/polymer/polymer-element";
 import {customElement, property, computed} from '@polymer/decorators';
+import '@polymer/paper-button';
+import '@polymer/iron-flex-layout/iron-flex-layout';
 import {UserInfo} from "../../model/model";
 import {sendUserInfoRequest} from "../../service/api";
 import {asTemplate} from "../../shared/util";
-import './bad-login-button';
 import * as TEMPLATE from "./bad-login-1.html";
-import '@polymer/paper-button';
-import '@polymer/iron-flex-layout/iron-flex-layout';
-import 'marked';
-import '@polymer/marked-element/marked-element';
 import * as README from "./bad-login-1.md";
+import './bad-login-button';
+import '../common-layout/common-layout';
 
 @customElement('bad-login-1')
 class BadLogin1 extends PolymerElement {

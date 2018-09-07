@@ -1,21 +1,40 @@
 <style>
-  :host {
-    display: block;
-    font-family: Roboto;
-  }
+    :host {
+        display: block;
+        font-family: Roboto;
+        @apply --layout-vertical;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
 
-  * {
-    --paper-tabs-selection-bar-color: darkgreen;
-  }
+    iron-pages {
+        @apply --layout-flex;
+        position: relative;
+    }
+
+    bad-login-1 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    * {
+        --paper-tabs-selection-bar-color: darkgreen;
+    }
 </style>
 <h2>Security playground</h2>
 <paper-tabs selected='{{pageSelected}}'>
-  <paper-tab>Bad Login 1</paper-tab>
-  <paper-tab>Bad Login 2</paper-tab>
-  <paper-tab>Login Ok</paper-tab>
+    <paper-tab>Bad Login 1</paper-tab>
+    <paper-tab>Bad Login 2</paper-tab>
+    <paper-tab>Login Ok</paper-tab>
 </paper-tabs>
 <iron-pages selected='[[pageSelected]]'>
-  <div>
+
     <bad-login-1></bad-login-1>
-  </div>
+
 </iron-pages>
