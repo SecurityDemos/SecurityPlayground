@@ -22,8 +22,8 @@ class PlaygroundApp extends PolymerElement {
   isLoggedIn: boolean = false;
   @property({ type: Object })
   userInfo?: UserInfo;
-  @property({type:Number})
-  pageSelected:number = 0;
+  @property({ type: Number })
+  pageSelected: number = 0;
 
   authToken?: string;
 

@@ -4,7 +4,7 @@ import { BACKEND_URL } from "../environments/environment";
 
 export async function sendLoginRequest(username: string, password: string): Promise<string> {
   let res = await GET({
-    url: `${BACKEND_URL}/login/bad?username={username}&password={password}`, parameters: {
+    url: `${BACKEND_URL}/login/bad1?username={username}&password={password}`, parameters: {
       username: username,
       password: password,
     }
