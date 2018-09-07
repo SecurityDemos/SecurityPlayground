@@ -1,16 +1,13 @@
-import { PolymerElement } from "@polymer/polymer/polymer-element";
-import { customElement, property } from '@polymer/decorators';
-import '@polymer/paper-button';
+import {PolymerElement} from "@polymer/polymer/polymer-element";
+import {customElement, property} from '@polymer/decorators';
+
 import '@polymer/paper-tabs/paper-tab';
 import '@polymer/paper-tabs/paper-tabs';
 import '@polymer/iron-pages/iron-pages';
-import { asTemplate } from '../shared/util';
+import {asTemplate} from '../shared/util';
 
-import './bad-login-button';
-import { UserInfo } from "../model/model";
 import * as TEMPLATE from "./playground-app.html";
-import { sendUserInfoRequest } from "../service/api";
-
+import '../components/bad-login-1/bad-login-1';
 
 /**
  * @customElement
@@ -18,29 +15,14 @@ import { sendUserInfoRequest } from "../service/api";
  */
 @customElement('playground-app')
 class PlaygroundApp extends PolymerElement {
-  @property({ type: Boolean })
-  isLoggedIn: boolean = false;
-  @property({ type: Object })
-  userInfo?: UserInfo;
-  @property({ type: Number })
-  pageSelected: number = 0;
 
-  authToken?: string;
+    @property({type: Number})
+    pageSelected: number = 0;
 
-  static get template() {
-    return asTemplate(TEMPLATE);
-  }
 
-  async loggedIn(e: CustomEvent) {
-    this.authToken = e.detail;
-    this.userInfo = await sendUserInfoRequest(this.authToken || '');
-    this.isLoggedIn = true;
-  }
+    static get template() {
+        return asTemplate(TEMPLATE);
+    }
 
-  onLogout() {
-    this.isLoggedIn = false;
-    this.userInfo = undefined;
-    this.authToken = undefined;
-  }
 
 }

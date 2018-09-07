@@ -7,9 +7,9 @@ import '@polymer/paper-input/paper-input';
 import '@polymer/iron-collapse/iron-collapse';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/iron-icons/iron-icons';
-import { asTemplate } from "../shared/util";
+import { asTemplate } from "../../shared/util";
 import * as TEMPLATE from './bad-login-button.html';
-import { sendLoginRequest } from "../service/api";
+import { sendLoginRequest } from "../../service/api";
 
 @customElement('bad-login')
 class BadLoginButton extends PolymerElement {

@@ -12,15 +12,6 @@
 </paper-tabs>
 <iron-pages selected='[[pageSelected]]'>
   <div>
-    <dom-if if=[[!isLoggedIn]]>
-      <template>
-        <bad-login on-login-result='loggedIn'></bad-login>
-      </template>
-    </dom-if>
-    <dom-if if=[[isLoggedIn]]>
-      <template>
-        Benvenuto [[userInfo.displayName]] !! <paper-button on-click='onLogout' raised>Logout</paper-button>
-      </template>
-    </dom-if>
+    <bad-login-1></bad-login-1>
   </div>
 </iron-pages>

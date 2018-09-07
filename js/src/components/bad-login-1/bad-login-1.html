@@ -1,0 +1,10 @@
+<dom-if if=[[!isLoggedIn]]>
+    <template>
+        <bad-login on-login-result='loggedIn'></bad-login>
+    </template>
+</dom-if>
+<dom-if if=[[isLoggedIn]]>
+    <template>
+        Benvenuto [[userInfo.displayName]] !! <paper-button on-click='onLogout' raised>Logout</paper-button>
+    </template>
+</dom-if>
