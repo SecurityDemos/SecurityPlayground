@@ -9,6 +9,7 @@ import * as TEMPLATE from "./common-layout.html";
 import '@polymer/paper-button';
 import '@polymer/iron-flex-layout/iron-flex-layout';
 import '@polymer/marked-element/marked-element';
+import 'marked';
 
 
 @customElement('common-layout')
