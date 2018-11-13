@@ -15,7 +15,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(html)$/,
+                test: /\.(md|html)$/,
                 use: {
                     loader: 'html-loader'
                 }

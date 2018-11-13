@@ -32,11 +32,22 @@
     <paper-tab>Bad Login 1</paper-tab>
     <paper-tab>Bad Login 2</paper-tab>
     <paper-tab>Login Ok</paper-tab>
+    <paper-tab>Bad Auth</paper-tab>
 </paper-tabs>
 <iron-pages selected='[[pageSelected]]'>
 
     <bad-login-1></bad-login-1>
     <bad-login-2></bad-login-2>
     <login-ok></login-ok>
-
+    <div>
+        <p>Prova ad entrare qui : <a href="/static/bad-auth/home.html">HOME!</a></p>
+        <p><b>Suggerimento:</b> Se non riesci prova ad impostare il cookie "isAuthenticated" </p>
+        <p>Puoi farlo così:
+            <ol>
+                <li>Apri la console</li>
+                <li>Scrivi: <pre>document.cookies='isAuthenticated=true'</pre></li>
+                
+            </ol>
+        </p>
+    </div>
 </iron-pages>
