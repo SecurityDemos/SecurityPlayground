@@ -27,4 +27,9 @@ ref
 /dist/
 /nbdist/
 /.nb-gradle/
-/static
+/static/index.html
+/static/app.*.js
+/static/font-roboto-local
+/static/static
+/static/webcomponentjs
+/static/index.html

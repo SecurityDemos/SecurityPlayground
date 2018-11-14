@@ -38,7 +38,7 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
     plugins: [
-        new CleanWebpackPlugin(['static'], {root: path.resolve(__dirname, '..')}),
+        new CleanWebpackPlugin(['app.*.js','static','font-roboto-local','index.html'], {root: path.resolve(__dirname, '../static')}),
         new webpack.NormalModuleReplacementPlugin(
             /environments\/environment\.ts/,
             'environment.prod.ts'
