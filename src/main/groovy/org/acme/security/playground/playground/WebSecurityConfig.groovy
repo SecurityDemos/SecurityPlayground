@@ -16,8 +16,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/secure")
-                .authenticated()
+                    .authenticated()
                 .anyRequest().permitAll()
+
+        // For XXE test
+        http.csrf().disable()
 
         http.formLogin()
                 .loginPage('/login2')
