@@ -1,11 +1,13 @@
-package org.acme.security.playground.examples;
+package examples;
 
 import org.apache.tomcat.util.http.fileupload.util.Streams;
+import org.junit.Test;
 
 import java.io.*;
 
-public class ExampleCommandInjection {
-    public static void main(String[] args) throws IOException, InterruptedException {
+public class ExampleCommandInjectionTest {
+    @Test
+    public void testCmdInjection() throws IOException, InterruptedException {
         String username;
 
         username = "mario`/bin/echo 'newuser:newpassword' >> /tmp/passwd`";
@@ -20,7 +22,6 @@ public class ExampleCommandInjection {
         w.close();
 
         p.waitFor();
-
 
         System.err.println(Streams.asString(p.getErrorStream()));
         System.out.println(Streams.asString(p.getInputStream()));
