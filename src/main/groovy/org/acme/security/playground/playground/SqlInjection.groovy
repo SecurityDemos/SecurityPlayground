@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.w3c.dom.Document
 import org.w3c.dom.Element
+import org.xml.sax.EntityResolver
+import org.xml.sax.InputSource
+import org.xml.sax.SAXException
 
 import javax.servlet.http.HttpServletRequest
 import javax.xml.parsers.DocumentBuilder
@@ -85,6 +88,7 @@ class SqlInjection {
     LoginData loginByXML(@RequestBody String xmlRequest) {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance()
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder()
+
         Document doc = documentBuilder.parse(new ByteArrayInputStream(xmlRequest.getBytes(StandardCharsets.UTF_8)))
 
         String username = ((Element) doc.getElementsByTagName("username").item(0)).getTextContent()
