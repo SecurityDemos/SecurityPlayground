@@ -26,7 +26,7 @@ import java.nio.charset.StandardCharsets
 
 @RestController()
 @CrossOrigin(origins = "*")
-class SqlInjectionApi {
+class PlaygroundRestApi {
 
     @Autowired
     BadDatasource badDatasource
@@ -100,5 +100,20 @@ class SqlInjectionApi {
         } else {
             throw new RuntimeException("User " + username + " is not authenticated")
         }
+    }
+
+    @RequestMapping(path = '/deser', method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+    def deserDemo(@RequestBody String encodedToken) {
+        // Token is a b64 java object
+        byte[] bin = Base64.decoder.decode(encodedToken)
+
+        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bin))
+        Map<String,Object> token = ois.readObject()
+        ois.close()
+
+
+        // Do stuff with the token :
+
+        System.out.println(token)
     }
 }
