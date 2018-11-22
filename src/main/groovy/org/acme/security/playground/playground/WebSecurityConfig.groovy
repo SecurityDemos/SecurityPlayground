@@ -16,7 +16,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/secure")
-                    .authenticated()
+                .authenticated()
+                .antMatchers("/admin")
+                    .access("hasRole('ADMIN')")
                 .anyRequest().permitAll()
 
         // For XXE test
@@ -36,8 +38,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         new InMemoryUserDetailsManager(
                 User.withDefaultPasswordEncoder()
                         .username('mario')
-                        .password('rossi')
+                        .password('password')
                         .roles('USER')
+                        .build(),
+                User.withDefaultPasswordEncoder()
+                        .username('giuseppe')
+                        .password('password')
+                        .roles('USER', 'ADMIN')
                         .build())
     }
 }

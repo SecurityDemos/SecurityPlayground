@@ -26,7 +26,7 @@ import java.nio.charset.StandardCharsets
 
 @RestController()
 @CrossOrigin(origins = "*")
-class SqlInjection {
+class SqlInjectionApi {
 
     @Autowired
     BadDatasource badDatasource
