@@ -1,6 +1,8 @@
 package org.acme.security.playground.playground;
 
-public class LoginData {
+import java.io.Serializable;
+
+public class LoginData implements Serializable {
     private long id;
     private String displayName;
 

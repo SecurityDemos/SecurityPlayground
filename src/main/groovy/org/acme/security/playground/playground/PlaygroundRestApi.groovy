@@ -108,12 +108,33 @@ class PlaygroundRestApi {
         byte[] bin = Base64.decoder.decode(encodedToken)
 
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bin))
-        Map<String,Object> token = ois.readObject()
+        LoginData token = ois.readObject()
         ois.close()
-
 
         // Do stuff with the token :
 
-        System.out.println(token)
+        return ResponseEntity.ok(token)
+    }
+
+
+    @RequestMapping('/loginSer')
+    def loginSer(@RequestParam('username') String username, @RequestParam('password') String password) {
+
+        // Login and return the auth token.
+        String authName = badDatasource.doLoginOk(username, password)
+        if (authName == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
+        }
+
+        LoginData data = badDatasource.queryLoginDataByUsername(authName);
+
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream()
+        ObjectOutputStream oos = new ObjectOutputStream(baos)
+        oos.writeObject(data)
+        oos.close()
+        baos.close()
+
+        ResponseEntity.ok(Base64.encoder.encodeToString(baos.toByteArray()))
     }
 }
