@@ -4,25 +4,40 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
 }
+
 
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+apply plugin: "org.sonarqube"
 
 group = 'org.acme.security.playground'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
 
 dependencies {
     //compile('org.springframework.boot:spring-boot-starter')
@@ -36,8 +51,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
 
-
-
     // https://mvnrepository.com/artifact/org.liquibase/liquibase-core
     compile group: 'org.liquibase', name: 'liquibase-core', version: '3.6.2'
 
@@ -46,3 +59,5 @@ dependencies {
     compile('org.codehaus.groovy:groovy')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+check.dependsOn jacocoTestReport
