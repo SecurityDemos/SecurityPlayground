@@ -7,10 +7,12 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+        classpath "org.owasp:dependency-check-gradle:4.0.0"
     }
 }
 
@@ -21,6 +23,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 apply plugin: "org.sonarqube"
+apply plugin: "org.owasp.dependencycheck"
 
 group = 'org.acme.security.playground'
 version = '0.0.2-SNAPSHOT'

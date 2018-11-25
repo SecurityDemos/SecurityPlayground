@@ -4,12 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.PreparedStatementCallback
 import org.springframework.stereotype.Component
-import org.w3c.dom.Document
-import org.w3c.dom.Element
 
-import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
-import java.nio.charset.StandardCharsets
 import java.sql.ResultSet
 
 /**

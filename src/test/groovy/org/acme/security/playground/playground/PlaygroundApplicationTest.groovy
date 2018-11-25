@@ -1,5 +1,6 @@
 package org.acme.security.playground.playground
 
+
 import org.hamcrest.core.IsEqual
 import org.hamcrest.core.IsNull
 import org.junit.Assert
@@ -17,7 +18,7 @@ class PlaygroundApplicationTest {
     private PlaygroundRestApi api
 
     @Autowired
-    private BadDatasource dao
+    private AnotherDao dao
 
 
     @Test
